@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Silent Fixer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white font-sans">
+  <!-- Hero -->
+  <section class="text-center py-10">
+    <h1 class="text-4xl font-bold mb-2">THE SILENT FIXER</h1>
+    <p class="text-lg text-gray-300">I fix what others ignore — Whisper your glitch.</p>
+  </section>  <!-- Common Issues -->  <section class="px-4 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-xl mx-auto">
+    <button onclick="sendToWhatsApp('My computer is too slow')" class="bg-gray-800 p-4 rounded-xl hover:bg-gray-700">Computer is too slow</button>
+    <button onclick="sendToWhatsApp('My phone storage is always full')" class="bg-gray-800 p-4 rounded-xl hover:bg-gray-700">Phone storage full</button>
+    <button onclick="sendToWhatsApp('My laptop shuts down randomly')" class="bg-gray-800 p-4 rounded-xl hover:bg-gray-700">Laptop shuts down</button>
+    <button onclick="sendToWhatsApp('Apps keep crashing')" class="bg-gray-800 p-4 rounded-xl hover:bg-gray-700">Apps crash a lot</button>
+  </section>  <!-- Contact Form -->  <section class="py-10 px-4 max-w-xl mx-auto">
+    <h2 class="text-2xl font-bold mb-4">Whisper a Glitch</h2>
+    <form onsubmit="submitForm(event)" class="bg-gray-900 p-6 rounded-xl">
+      <input id="name" type="text" placeholder="Your Name" class="w-full p-2 mb-4 rounded bg-gray-800 text-white" required>
+      <textarea id="problem" placeholder="Describe the issue..." class="w-full p-2 mb-4 rounded bg-gray-800 text-white" required></textarea>
+      <select id="urgency" class="w-full p-2 mb-4 rounded bg-gray-800 text-white">
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+      </select>
+      <button type="submit" class="w-full bg-green-600 hover:bg-green-500 p-2 rounded">Whisper a Glitch</button>
+    </form>
+  </section>  <!-- Floating WhatsApp Button -->  <a href="https://wa.me/254728684874" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-400 p-4 rounded-full shadow-lg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6">
+  </a>  <!-- Scripts -->  <script>
+    function sendToWhatsApp(message) {
+      const phone = '254728684874';
+      const encoded = encodeURIComponent(message);
+      window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const problem = document.getElementById('problem').value;
+      const urgency = document.getElementById('urgency').value;
+      const text = `Hello, I'm ${name}.\nProblem: ${problem}\nUrgency: ${urgency}`;
+      sendToWhatsApp(text);
+    }
+  </script></body>
+</html>
